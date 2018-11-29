@@ -63,6 +63,18 @@ class updateTokenAfterSubmit extends PluginBase {
             $oToken->completed = "N";
             $oToken->usesleft++;
         }
+        if($this->get('keepTrackOn','Survey',$surveyId,"")) {
+            $keepTrackOn = $this->get('keepTrackOn','Survey',$surveyId,"");
+            $currentTrack = isset($oToken->$keepTrackOn) ? $oToken->$keepTrackOn : null;
+            if(!is_null($currentTrack)) {
+                $numberTrack = 0;
+                if(substr($currentTrack, 0, strlen("updateTokenAfterSubmit-")) === "updateTokenAfterSubmit-") {
+                    $numberTrack = intval(substr($currentTrack,strlen("updateTokenAfterSubmit-")));
+                }
+                $numberTrack++;
+                $oToken->$keepTrackOn = "updateTokenAfterSubmit-".$numberTrack;
+            }
+        }
         if(!$oToken->save()) {
             $this->log("Unable to update token code {$token} in survey {$surveyId}",'error');
             $this->log(sprintf("With error %",CVarDumper::dumpAsString($oToken->getErrors(), 2, false)),'warning');
