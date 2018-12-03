@@ -5,7 +5,7 @@
  * @author Denis Chenu <denis@sondages.pro>
  * @copyright 2018 Denis Chenu <http://www.sondages.pro>
  * @license GPL v3
- * @version 0.0.1
+ * @version 0.1.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE as published by
@@ -75,6 +75,12 @@ class updateTokenAfterSubmit extends PluginBase {
                 $oToken->$keepTrackOn = "updateTokenAfterSubmit-".$numberTrack;
             }
         }
+        if($this->get('emailUpdatedTo','Survey',$surveyId,"")) {
+            $emailUpdatedTo = $this->get('emailUpdatedTo','Survey',$surveyId,"");
+            $emailUpdatedTo = LimeExpressionManager::ProcessStepString($emailUpdatedTo,array(),3,true); // as static
+            $oToken->scenario = 'allowinvalidemail'; // Need diable rule
+            $oToken->email = $emailUpdatedTo;
+        }
         if(!$oToken->save()) {
             $this->log("Unable to update token code {$token} in survey {$surveyId}",'error');
             $this->log(sprintf("With error %",CVarDumper::dumpAsString($oToken->getErrors(), 2, false)),'warning');
@@ -122,6 +128,12 @@ class updateTokenAfterSubmit extends PluginBase {
                     'label' => $this->_translate("Reset token and response to allow editing response."),
                     'help' => $this->_translate("If needed : token is reset to not completed and response to not submitted."),
                     'current'=>$this->get('resetToken','Survey',$surveyId,1),
+                ),
+                'emailUpdatedTo' => array(
+                    'type' => 'string',
+                    'label' => $this->_translate("Update email with new value."),
+                    'help' => $this->_translate("Usage of expression is allowed and invalid email is saved too."),
+                    'current'=>$this->get('emailUpdatedTo','Survey',$surveyId,""),
                 ),
             )
         ));
