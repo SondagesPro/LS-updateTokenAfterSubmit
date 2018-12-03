@@ -1,9 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: updateTokenAfterSubmit\n"
-"POT-Creation-Date: 2018-11-30 09:04+0100\n"
-"PO-Revision-Date: 2018-11-30 09:14+0100\n"
+"POT-Creation-Date: 2018-12-03 12:01+0100\n"
+"PO-Revision-Date: 2018-12-03 12:02+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,48 +13,56 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: _translate\n"
-"Last-Translator: \n"
-"Language: fr_FR\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: updateTokenAfterSubmit.php:106
+#: updateTokenAfterSubmit.php:112
 msgid "Fixed code to add when survey is submitted."
 msgstr "Code fixe à ajouter quand le questionnaire est soumis."
 
-#: updateTokenAfterSubmit.php:107
+#: updateTokenAfterSubmit.php:113
 msgid ""
 "This code is added at the end of the token only if it does not end already "
 "with this code."
 msgstr ""
-"Ce code est ajouté au code d‘invitation si celui-ci ne fini pas déjà par "
-"ce code."
+"Ce code est ajouté au code d‘invitation si celui-ci ne fini pas déjà par ce "
+"code."
 
-#: updateTokenAfterSubmit.php:114
+#: updateTokenAfterSubmit.php:120
 msgid "No tracking on token table"
 msgstr "Pas de suivi dans la table des invitations"
 
-#: updateTokenAfterSubmit.php:116
+#: updateTokenAfterSubmit.php:122
 msgid "Where to keep track information about updated token."
 msgstr ""
 "Emplacement où conserver le suivi des mises à jour du code d‘invitation."
 
-#: updateTokenAfterSubmit.php:117
+#: updateTokenAfterSubmit.php:123
 msgid ""
 "Data for this token is updated to updateTokenAfterSubmit-X, where X is the "
 "number of updating done."
 msgstr ""
-"La donnée pour cette invitation sera mise à jour avec "
-"updateTokenAfterSubmit-X ou X sera le nombre de mise à jour."
+"La donnée pour cette invitation sera mise à jour avec updateTokenAfterSubmit-"
+"X ou X sera le nombre de mise à jour."
 
-#: updateTokenAfterSubmit.php:122
+#: updateTokenAfterSubmit.php:128
 msgid "Reset token and response to allow editing response."
 msgstr ""
 "Réinitialiser l‘invitation et la réponse pour permettre la modification de "
 "celle-ci."
 
-#: updateTokenAfterSubmit.php:123
+#: updateTokenAfterSubmit.php:129
 msgid ""
 "If needed : token is reset to not completed and response to not submitted."
 msgstr ""
 "Au besoin : l‘invitation sera réinitialisé sur non complétée et la réponse "
 "sur non soumise."
+
+#: updateTokenAfterSubmit.php:134
+msgid "Update email with new value."
+msgstr "Mettre à jour l‘adresse de courriel avec une nouvelle valeur."
+
+#: updateTokenAfterSubmit.php:135
+msgid "Usage of expression is allowed and invalid email is saved too."
+msgstr ""
+"L‘utilisation d'expression est permise et les adresses invalides sont "
+"sauvegardées."
