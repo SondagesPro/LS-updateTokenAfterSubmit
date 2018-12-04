@@ -5,7 +5,7 @@
  * @author Denis Chenu <denis@sondages.pro>
  * @copyright 2018 Denis Chenu <http://www.sondages.pro>
  * @license GPL v3
- * @version 0.1.0
+ * @version 0.2.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE as published by
@@ -43,7 +43,12 @@ class updateTokenAfterSubmit extends PluginBase {
             return;
         }
         $oSurvey = Survey::model()->findByPk($surveyId);
-        if(!$oSurvey->getHasTokensTable()) {
+        if(intval(Yii::app()->getConfig('versionnumber')) >= 3) {
+            $hasTokenTable = $oSurvey->getHasTokensTable();
+        } else {
+            $hasTokenTable = Survey::model()->hasTokens($surveyId);
+        }
+        if(!$hasTokenTable) {
             return;
         }
         $token = isset($_SESSION['survey_'.$surveyId]['token']) ? $_SESSION['survey_'.$surveyId]['token']: null;
@@ -77,7 +82,11 @@ class updateTokenAfterSubmit extends PluginBase {
         }
         if($this->get('emailUpdatedTo','Survey',$surveyId,"")) {
             $emailUpdatedTo = $this->get('emailUpdatedTo','Survey',$surveyId,"");
-            $emailUpdatedTo = LimeExpressionManager::ProcessStepString($emailUpdatedTo,array(),3,true); // as static
+            if(intval(Yii::app()->getConfig('versionnumber')) >= 3) {
+                $emailUpdatedTo = LimeExpressionManager::ProcessStepString($emailUpdatedTo,array(),3,true); // as static
+            } else {
+                $emailUpdatedTo = LimeExpressionManager::ProcessString($emailUpdatedTo,null, array(), false, 3, 1, false, false, true);
+            }
             $oToken->scenario = 'allowinvalidemail'; // Need diable rule
             $oToken->email = $emailUpdatedTo;
         }
