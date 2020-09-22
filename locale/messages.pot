@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: updateTokenAfterSubmit\n"
-"POT-Creation-Date: 2018-12-03 12:01+0100\n"
+"POT-Creation-Date: 2020-09-22 10:56+0200\n"
 "PO-Revision-Date: 2018-11-30 09:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,49 +10,79 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: _translate\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: locale\n"
 
-#: updateTokenAfterSubmit.php:112
+#: updateTokenAfterSubmit.php:162
+msgid ""
+"Curent settings disallow usage of this plugin: anonymized responses and "
+"token-based response persistence must be on"
+msgstr ""
+
+#: updateTokenAfterSubmit.php:168
+msgid ""
+"Automatically load URL when survey complete is activated, this disable "
+"usage of this plugin."
+msgstr ""
+
+#: updateTokenAfterSubmit.php:175
 msgid "Fixed code to add when survey is submitted."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:113
+#: updateTokenAfterSubmit.php:176
 msgid ""
 "This code is added at the end of the token only if it does not end already "
 "with this code."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:120
+#: updateTokenAfterSubmit.php:183
 msgid "No tracking on token table"
 msgstr ""
 
-#: updateTokenAfterSubmit.php:122
+#: updateTokenAfterSubmit.php:185
 msgid "Where to keep track information about updated token."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:123
+#: updateTokenAfterSubmit.php:186
 msgid ""
 "Data for this token is updated to updateTokenAfterSubmit-X, where X is the "
 "number of updating done."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:128
-msgid "Reset token and response to allow editing response."
+#: updateTokenAfterSubmit.php:196
+msgid "Automatic"
 msgstr ""
 
-#: updateTokenAfterSubmit.php:129
+#: updateTokenAfterSubmit.php:198
+msgid "Reset token and response to allow editing response. "
+msgstr ""
+
+#: updateTokenAfterSubmit.php:199
 msgid ""
-"If needed : token is reset to not completed and response to not submitted."
+"Token is reset to not completed and response to not submitted.Automatic "
+"mean do it if survey don‘t allow edit after completion."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:134
+#: updateTokenAfterSubmit.php:204
 msgid "Update email with new value."
 msgstr ""
 
-#: updateTokenAfterSubmit.php:135
+#: updateTokenAfterSubmit.php:205
 msgid "Usage of expression is allowed and invalid email is saved too."
+msgstr ""
+
+#: updateTokenAfterSubmit.php:210
+msgid "Automatically load URL after this plugin action."
+msgstr ""
+
+#: updateTokenAfterSubmit.php:211
+msgid ""
+"You can‘t use automatically load URL when survey complete from limesurvey "
+"core, then if needed activate it here. Warning : no replacement is done on "
+"the url. This redirection is done only if token are updated."
 msgstr ""
