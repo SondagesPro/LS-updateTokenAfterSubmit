@@ -3,9 +3,9 @@
  * Update (and reset if needed) token code after submission
  *
  * @author Denis Chenu <denis@sondages.pro>
- * @copyright 2018 Denis Chenu <http://www.sondages.pro>
+ * @copyright 2018-2020 Denis Chenu <http://www.sondages.pro>
  * @license GPL v3
- * @version 0.3.2
+ * @version 0.3.3
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE as published by
@@ -33,9 +33,12 @@ class updateTokenAfterSubmit extends PluginBase {
     }
 
     public function afterSurveyComplete() {
+        if (!$this->getEvent()) {
+            throw new CHttpException(403);
+        }
         if($this->updateToken()) {
+            $surveyId = $this->getEvent()->get('surveyId');
             if($this->get('autoRedirect','Survey',$surveyId,1)) {
-                $surveyId = $this->getEvent()->get('surveyId');
                 $language = Yii::app()->getLanguage();
                 $oSurveyLanguageSettings = SurveyLanguageSetting::model()->findByPk(array('surveyls_survey_id'=>$surveyId, 'surveyls_language'=>$language));
                 if(!empty($oSurveyLanguageSettings) && !empty($oSurveyLanguageSettings->surveyls_url)) {
@@ -46,6 +49,9 @@ class updateTokenAfterSubmit extends PluginBase {
     }
 
     public function afterSurveyQuota() {
+        if (!$this->getEvent()) {
+            throw new CHttpException(403);
+        }
         $this->updateToken();
     }
 
@@ -152,6 +158,9 @@ class updateTokenAfterSubmit extends PluginBase {
     /** @inheritdoc **/
     public function beforeSurveySettings()
     {
+        if (!$this->getEvent()) {
+            throw new CHttpException(403);
+        }
         $oEvent = $this->event;
         $surveyId = $oEvent->get('survey');
         $oSurvey = Survey::model()->findByPk($surveyId);
@@ -221,6 +230,9 @@ class updateTokenAfterSubmit extends PluginBase {
     /** @inheritdoc **/
     public function newSurveySettings()
     {
+        if (!$this->getEvent()) {
+            throw new CHttpException(403);
+        }
         $event = $this->getEvent();
         foreach ($event->get('settings') as $name => $value) {
           $this->set($name, $value, 'Survey', $event->get('survey'));
